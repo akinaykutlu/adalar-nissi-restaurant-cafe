@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Nissi Restaurant &amp; cafe - Deniz mahsülleri restoranı - Adalar, İstanbul"/>
+  <title>Nissi Restaurant &amp; cafe</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #FDF6EC;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+    a { color: #C0392B; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* HEADER */
+    .site-header {
+      background: linear-gradient(135deg, #922B21 0%, #C0392B 60%, #E74C3C 100%);
+      color: #fff;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-badge {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 320px;
+      overflow: hidden;
+    }
+    @media(max-width: 600px) { .hero { height: 210px; } }
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(0,0,0,0.05) 0%,
+        rgba(0,0,0,0.55) 100%);
+    }
+    .hero-content {
+      position: absolute;
+      bottom: 28px;
+      left: 28px;
+      right: 28px;
+      color: #fff;
+    }
+    .hero-kategori {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.88;
+      margin-bottom: 6px;
+    }
+    .hero-title {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+
+    /* MAIN CARD */
+    .container {
+      max-width: 760px;
+      margin: -40px auto 0;
+      padding: 0 16px 48px;
+      position: relative;
+      z-index: 1;
+    }
+    .main-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.13);
+      overflow: hidden;
+    }
+    .card-top {
+      padding: 28px 28px 18px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .business-name {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #922B21;
+      margin-bottom: 8px;
+    }
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .stars {
+      color: #F39C12;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+    .rating-val {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #1a1a1a;
+    }
+    .rating-count {
+      font-size: 0.85rem;
+      color: #888;
+    }
+    .location-tag {
+      display: inline-block;
+      font-size: 0.82rem;
+      color: #666;
+      background: #f5f5f5;
+      border-radius: 12px;
+      padding: 3px 10px;
+    }
+
+    /* INFO CARDS */
+    .info-section {
+      padding: 20px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .info-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 16px;
+      background: #FDF6EC;
+      border-radius: 10px;
+      border-left: 3px solid #C0392B;
+    }
+    .info-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .info-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #999;
+      margin-bottom: 3px;
+    }
+    .info-value {
+      font-size: 0.97rem;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+    .info-value a {
+      color: #C0392B;
+      font-weight: 600;
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 24px 28px 28px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 10px;
+      font-size: 0.97rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: transform 0.12s, box-shadow 0.12s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #C0392B, #E74C3C);
+      color: #fff;
+    }
+    .btn-secondary {
+      background: #f5f5f5;
+      color: #1a1a1a;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      text-align: center;
+      padding: 28px 16px;
+      font-size: 0.78rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="header-badge">Deniz mahsülleri restoranı</span>
+  <span class="location-tag">📍 Adalar, İstanbul</span>
+</header>
+
+<div class="hero">
+  <img class="hero-img" src="https://source.unsplash.com/1200x500/?cafe,food,cozy,interior" alt="Nissi Restaurant &amp; cafe" loading="eager"/>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-kategori">Deniz mahsülleri restoranı</div>
+    <h1 class="hero-title">Nissi Restaurant &amp; cafe</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="main-card">
+
+    <div class="card-top">
+      <div class="business-name">Nissi Restaurant &amp; cafe</div>
+      
+        <div class="rating-row">
+          <span class="stars">★★★★½</span>
+          <span class="rating-val">4.8</span>
+          <span class="rating-count">(5994 değerlendirme)</span>
+        </div>
+      <span class="location-tag">📍 Adalar, İstanbul</span>
+    </div>
+
+    <div class="info-section">
+      
+        <div class="info-card">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">Telefon</div>
+            <div class="info-value">
+              <a href="tel:+90+90 534 245 66 44">+90 534 245 66 44</a>
+            </div>
+          </div>
+        </div>
+      
+        <div class="info-card">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Adres</div>
+            <div class="info-value">
+              <a href="https://maps.google.com/?q=Gülistan cd 63/a büyükada, 34970 Adalar/İstanbul, Türkiye" target="_blank" rel="noopener">Gülistan cd 63/a büyükada, 34970 Adalar/İstanbul, Türkiye</a>
+            </div>
+          </div>
+        </div>
+      
+        <div class="info-card">
+          <div class="info-icon">🕐</div>
+          <div>
+            <div class="info-label">Çalışma Saatleri</div>
+            <div class="info-value">Açık · Kapanış saati: 00:00</div>
+          </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+      <a class="btn btn-primary" href="tel:+90+90 534 245 66 44">📞 Hemen Ara</a>
+      <a class="btn btn-secondary" href="https://maps.google.com/?q=Gülistan cd 63/a büyükada, 34970 Adalar/İstanbul, Türkiye" target="_blank" rel="noopener">🗺 Haritada Gör</a>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  © Nissi Restaurant &amp; cafe · Adalar, İstanbul
+</footer>
+
+</body>
+</html>
